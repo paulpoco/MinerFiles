@@ -15,12 +15,12 @@ $Port = "316{0:d2}"
 
 $Commands = [PSCustomObject]@{
     "c11"           = "" #C11
-	"hsr"           = "" #HSR
-	"lyra2z"        = "" #Lyra2z
-	"phi"           = "" 
+    "hsr"           = "" #HSR
+    "lyra2z"        = "" #Lyra2z
+    "phi"           = "" 
     "phi2"          = "" #LUX
-	"renesis"       = "" #Renesis
-	"tribus"        = "" #Tribus
+    "renesis"       = "" #Renesis
+    "tribus"        = "" #Tribus
     "x16r"          = "" #X16r
     "x16s"          = "" #X16s
     "x17"           = "" #x17
@@ -58,7 +58,7 @@ $Devices | Select-Object -ExpandProperty Model | ForEach-Object {
         [PSCustomObject]@{
             Name           = $Miner_Name
             DeviceName     = $Miner_Device.Name
-			DeviceModel    = $Miner_Model
+            DeviceModel    = $Miner_Model
             Path           = $Path
             HashSHA256     = $HashSHA256
             Arguments      = "-b 127.0.0.1:$($Miner_Port) -d $($DeviceIDsAll) -a $_ -o $($Pools.$Algorithm_Norm.Protocol)://$($Pools.$Algorithm_Norm.Host):$($Pools.$Algorithm_Norm.Port) -u $($Pools.$Algorithm_Norm.User) -p $($Pools.$Algorithm_Norm.Pass) $($_.Params)"
