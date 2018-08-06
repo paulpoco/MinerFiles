@@ -1,4 +1,4 @@
-﻿using module ..\Include.psm1
+using module ..\Include.psm1
 
 $Path = ".\Bin\CPU-Bubasik-Yespower\cpuminer.exe"
 $HashSHA256 = "89384FB35DA4D6FE75449020FE7A4FEC2BD8EB8FD26CCFB5E1980B93BD29578E"
@@ -16,7 +16,7 @@ $Commands = [PSCustomObject]@{
     #"x12" = "" #x12
     #"yescrypt" = "" #Yescrypt
     #"yescryptr16" = "" #yescryptr16, YENTEN
-    "yespower" = "" #Yespower, Cryply
+    "yespower" = " --cpu-affinity 0xAAAA" #Yespower, Cryply
 
     ### MAYBE PROFITABLE ALGORITHMS - NOT MINEABLE IN SUPPORTED POOLS AS OF 06/03/2018
     ### these algorithms are not mineable on supported pools but may be profitable
@@ -90,7 +90,7 @@ $Commands = [PSCustomObject]@{
     #"x17" = "" #X17
 }
 
-$CommonCommands = ""
+$CommonCommands = " --cpu-affinity 0xAAAA" #using all cores seemed to lock my system up, set affinity to your cpu
 
 $Name = Get-Item $MyInvocation.MyCommand.Path | Select-Object -ExpandProperty BaseName
 
