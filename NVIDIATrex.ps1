@@ -40,8 +40,8 @@ if ($DriverVersion -and $DriverVersion -lt $RequiredVersion) {
 
 $Devices = @($Devices | Where-Object Type -EQ "GPU" | Where-Object Vendor -EQ "NVIDIA Corporation")
 
-$Devices | Select-Object -ExpandProperty Model | ForEach-Object {
-    $Miner_Device = @($Devices | Where-Object Model -EQ $_)
+$Devices | Select-Object Model -Unique | ForEach-Object {
+    $Miner_Device = @($Devices | Where-Object Model -EQ $_.Model)
     $Miner_Port = $Port -f ($Miner_Device | Select-Object -First 1 -ExpandProperty Index)
     $Miner_Name = (@($Name) + @($Miner_Device.Name | Sort-Object) | Select-Object) -join '-'
 
